@@ -53,6 +53,35 @@ python md2png.py -i ./hyou1.md -s 4
 
 いずれも外枠は角丸（`border-radius: 10px`）で、罫線の外側に 16px の余白が入ります。
 
+## CSS のカスタマイズ
+
+`md2png.py` 内の `CSS`（通常スタイル）と `FLAT_CSS`（`--flat` 時の上書き）を編集することで、
+表の見た目を自由に変えられます。
+
+| 変数 | 役割 |
+|---|---|
+| `CSS` | 全モード共通の基本スタイル |
+| `FLAT_CSS` | `--flat` 指定時に `CSS` へ追記される上書きスタイル |
+
+代表的なカスタマイズ例：
+
+```python
+# 角丸の強さ（既定 10px）
+border-radius: 10px;
+
+# 外余白の量（既定 16px）
+.wrap { padding: 16px; }
+
+# フォントサイズ（既定 15px）
+.wrap { font-size: 15px; }
+
+# ヘッダの背景色（既定 #f0f3f6）
+th { background: #f0f3f6; }
+
+# 外枠・罫線の色（既定 #c8c8c8）
+border: 1px solid #c8c8c8;
+```
+
 ## Markdown の書き方メモ
 
 - 表は **ヘッダ行 + 区切り行（`|---|---|`）+ データ行** が必須です。
